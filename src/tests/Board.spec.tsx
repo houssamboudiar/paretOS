@@ -8,9 +8,9 @@ describe("LEADERBOARD", () => {
     beforeEach(() => {
       render(
         <Leaderboard
-          users={users}
+          user={users}
           itemsPerPage={3}
-          currentUser={users[5]}
+          user={users[5]}
           history={[]}
         />
       );

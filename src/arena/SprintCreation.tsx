@@ -56,6 +56,7 @@ function SprintCreation({ user, connectSocket, history }: SprintCreationProps) {
     setLoading(false);
     setLoaded(true);
   }
+
   async function createSprint() {
     setLoading(true);
     let dbMission;
@@ -210,6 +211,7 @@ function SprintCreation({ user, connectSocket, history }: SprintCreationProps) {
     }
     setLoading(false);
   }
+
   // eslint-disable-next-line no-unused-vars
   function validateForm() {
     let result;
@@ -222,6 +224,7 @@ function SprintCreation({ user, connectSocket, history }: SprintCreationProps) {
     // console.log(result);
     return result;
   }
+
   function renderMissionOptions(missions: FullMission[]) {
     return missions.map((mission, i) => (
       // eslint-disable-next-line react/no-array-index-key
@@ -230,6 +233,7 @@ function SprintCreation({ user, connectSocket, history }: SprintCreationProps) {
       </option>
     ));
   }
+
   function renderPlayerOptions(data: MinimalUser[]) {
     return data.map((playr, index) => (
       // eslint-disable-next-line react/no-array-index-key
@@ -269,6 +273,7 @@ function SprintCreation({ user, connectSocket, history }: SprintCreationProps) {
       }
     }
   }
+
   function handlePlayrChange(value: string, input: HTMLInputElement) {
     let parsedJSON = JSON.parse(value);
     let newPlayers = chosenPlayers.slice();
@@ -287,11 +292,11 @@ function SprintCreation({ user, connectSocket, history }: SprintCreationProps) {
       input.value = "";
     }
   }
+
   function removeChosenPlayer(chosenPlayer: MinimalUser) {
     setChosenPlayers(chosenPlayers.filter((plyr) => plyr !== chosenPlayer));
   }
 
-  console.log(chosenPlayers);
   return (
     <div>
       <h1>{I18n.get("startSprint")}</h1>
@@ -324,6 +329,7 @@ function SprintCreation({ user, connectSocket, history }: SprintCreationProps) {
           {renderPlayerOptions(players)}
         </datalist>
       </FormGroup>
+
       {chosenPlayers.map((chosen) => (
         <div key={chosen.id} className="block">
           {/* TODO: evaluate if these inline styles should apply to all blocks & move to index.css */}
@@ -346,6 +352,7 @@ function SprintCreation({ user, connectSocket, history }: SprintCreationProps) {
           </div>
         </div>
       ))}
+
       {/* TODO had to add any, review what's going on */}
       <LocalizationProvider dateAdapter={AdapterDateFns as any}>
         <StaticDatePicker
@@ -362,6 +369,7 @@ function SprintCreation({ user, connectSocket, history }: SprintCreationProps) {
           views={["day"]}
         />
       </LocalizationProvider>
+
       {/* <h3>Currently Selected Start Date: {startDate.toString()}</h3> */}
       <LoaderButton
         style={{ width: 350 }}
@@ -371,6 +379,7 @@ function SprintCreation({ user, connectSocket, history }: SprintCreationProps) {
         disabled={!ready}
         onClick={() => createSprint()}
       />
+      
     </div>
   );
 }

@@ -231,6 +231,7 @@ function CreateSprintTemplate(props: CreateSprintTemplateProps) {
           marginBottom: "3rem",
           fontWeight: 900,
         }}
+        title="CreateTemplate"
       >
         {I18n.get("createTemplate")}
       </h1>
